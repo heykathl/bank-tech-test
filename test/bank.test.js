@@ -10,6 +10,14 @@ describe("Bank", () => {
   it("can deposit money into the bank account", () => {
     const bank = new Bank();
     bank.deposit(10);
-    expect(bank.getBalance()).toBe(10)
-  })
+    expect(bank.getBalance()).toBe(10);
+  });
+
+  it("can withdrawn money from the bank account", () => {
+    const bank = new Bank();
+    bank.deposit(10);
+    bank.withdraw(5);
+    expect(bank.getBalance()).toBe(5);
+  });
+  
 })
