@@ -22,4 +22,8 @@ describe("Bank", () => {
     expect(bank.getBalance()).toBe(5);
   });
 
+  it("stores the date of when the money was deposited into bank", () => {
+   bank.deposit(10, "14/01/2023");
+   expect(bank.getTransaction()).toEqual([["14/01/2023", 10]]);
+  })
 })
