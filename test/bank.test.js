@@ -22,13 +22,35 @@ describe("Bank", () => {
     expect(bank.getBalance()).toBe(5.00);
   });
 
-  it("keeps a list of the transactions made", () => {
+  // it("keeps a list of each depositing transaction made", () => {
+  //   bank.deposit(10.00);
+  //   bank.deposit(5.00);
+  //   expect(bank.getTransactions()).toEqual([
+  //     {amount: 10.00},
+  //     {amount: 5.00}
+  //   ]);
+  // });
+
+  // it("keeps a list of each withdrawal transaction made", () => {
+  //   bank.deposit(10.00);
+  //   bank.withdraw(5.00);
+  //   bank.withdraw(2.00);
+  //   expect(bank.getTransactions()).toEqual([
+  //     {amount: 10.00},
+  //     {amount: 5.00},
+  //     {amount: 2.00}
+  //   ]);
+  // });
+
+  it("stores the type of transaction that was made eg. credit or debit", () => {
     bank.deposit(10.00);
-    bank.deposit(5.00);
+    bank.withdraw(5.00);
+    bank.withdraw(2.00);
     expect(bank.getTransactions()).toEqual([
-      {amount: 10.00},
-      {amount: 5.00}
-    ])
+      {type: "credit", amount: 10.00},
+      {type: "debit",amount: 5.00},
+      {type: "debit",amount: 2.00}
+    ]);
   })
 
   // it("stores the date of when the money was deposited into bank", () => {
