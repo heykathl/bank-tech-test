@@ -51,29 +51,21 @@ describe("Bank", () => {
       {type: "debit",amount: 5.00},
       {type: "debit",amount: 2.00}
     ]);
-  })
+  });
 
-  // it("stores the date of when the money was deposited into bank", () => {
-  //  bank.deposit(10, "14/01/2023");
-  //  expect(bank.getTransactions()).toEqual([["14/01/2023", 10]]);
-  // });
+  it("stores the date of when the money was deposited into bank", () => {
+   bank.deposit(10.00, "14/01/2023");
+   expect(bank.getTransactions()).toEqual([
+     {type: "credit", date: "14/01/2023", amount: 10.00}
+    ]);
+  });
 
-  // it("stores the date of when the money is withdrawn from bank", () => {
-  //   bank.deposit(10, "14/01/2023");
-  //   bank.withdraw(5, "15/01/2023");
-  //   expect(bank.getTransactions()).toEqual([["14/01/2023", 10], ["15/01/2023", 5]])
-  // });
-
-  // it("stores all transactions on same day together", () => {
-  //   bank.deposit(10, "14/01/2023");
-  //   bank.withdraw(5, "14/01/2023");
-  //   expect(bank.getTransactions()).toEqual([["14/01/2023", 10, 5]])
-  // });
-
-  // it("transactions to display whether the transaction was a credit or debit", () => {
-  //   bank.deposit(10, "14/01/2023");
-  //   expect(bank.getTransactions()).toEqual([{
-  //     type: "credit",
-  //     amount: 10}])
-  // })
+  it("stores the date of when the money is withdrawn from bank", () => {
+    bank.deposit(10.00, "14/01/2023");
+    bank.withdraw(5.00, "15/01/2023");
+    expect(bank.getTransactions()).toEqual([
+      {type: "credit", date: "14/01/2023", amount: 10.00},
+      {type: "debit", date: "15/01/2023", amount: 5.00}
+    ])
+  });
 })
