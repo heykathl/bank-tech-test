@@ -1,10 +1,13 @@
-const Bank = require('../lib/bank')
+const Bank = require('../lib/bank');
+const Statement = require('../lib/statement');
 
 describe("Bank", () => {
   let bank;
+  let statement;
 
   beforeEach(() => {
-    bank = new Bank();
+    statement = new Statement()
+    bank = new Bank(statement);
   });
 
   it("it returns bank balance", () => {
@@ -47,16 +50,16 @@ describe("Bank", () => {
     bank.withdraw(5.00);
     bank.withdraw(2.00);
     expect(bank.getTransactions()).toEqual([
-      {type: "credit", amount: 10.00},
-      {type: "debit",amount: 5.00},
-      {type: "debit",amount: 2.00}
+      {type: "credit", amount: 10.00, balance: 10.00},
+      {type: "debit", amount: 5.00, balance: 5.00},
+      {type: "debit", amount: 2.00, balance: 3.00}
     ]);
   });
 
-  it("stores the date of when the money was deposited into bank", () => {
-   bank.deposit(10.00, "14/01/2023");
+  it("stores the balance of when the money was deposited into bank", () => {
+   bank.deposit(10.00);
    expect(bank.getTransactions()).toEqual([
-     {type: "credit", date: "14/01/2023", amount: 10.00}
+     {type: "credit", amount: 10.00, balance: 10.00}
     ]);
   });
 
@@ -64,8 +67,16 @@ describe("Bank", () => {
     bank.deposit(10.00, "14/01/2023");
     bank.withdraw(5.00, "15/01/2023");
     expect(bank.getTransactions()).toEqual([
-      {type: "credit", date: "14/01/2023", amount: 10.00},
-      {type: "debit", date: "15/01/2023", amount: 5.00}
-    ])
+      {type: "credit", date: "14/01/2023", amount: 10.00, balance: 10.00},
+      {type: "debit", date: "15/01/2023", amount: 5.00, balance: 5.00}
+    ]);
   });
+
+  it("prints the statement of all transactions", () => {
+    bank.deposit(10.00, "14/01/2023");
+    bank.withdraw(5.00, "15/01/2023");
+    expect(bank.printStatement()).toBe(
+      "date || credit || debit || balance\n14/01/2023 || 10 ||  || 10\n15/01/2023 ||  || 5 || 5"
+    );
+  })
 })
