@@ -2,3 +2,6 @@ node_modules
 .DS-Store
 Bank.Drawio
 ~$Bank.drawio.bkp
+.eslintrc.js
+coverage/
+~$Bank.drawio.dtmp
