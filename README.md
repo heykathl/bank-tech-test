@@ -27,10 +27,10 @@ undefined
 
 To deposit or withdraw money into the account
 ```
-bank.deposit(<insert amount as an integer>, <insert date as a string>)
+bank.deposit(<insert amount as an integer>)
 ```
 ```
-bank.withdraw(<insert amount as an integer>, <insert date as a string>)
+bank.withdraw(<insert amount as an integer>)
 ```
 
 An example is shown below, and as shown in the Bank object, the transaction has been stored and balance updated
@@ -81,7 +81,7 @@ jest test/<filename>.test.js
 
 ## My approach to the challenge
 The challenge began with me drafting the user stories for each requirement outlined [here](https://github.com/makersacademy/course/blob/main/individual_challenges/bank_tech_test.md). 
-I began diagramming the Bank class, and its associated methods. During the process, I realised that it would have been appropriate to make a new class to print the statement of transactions, as shown below. This is to ensure that my code follows single resposibility principle (SRP).
+I began diagramming the Bank class, and its associated methods. During the process, I realised that it would have been appropriate to make a new class to print the statement of transactions, as shown below. This is to ensure that my code follows single resposibility principle (SRP).\
 <img width="467" alt="Screenshot 2022-04-25 at 18 31 05" src="https://user-images.githubusercontent.com/74867241/165142380-2c53bab0-56b4-4146-8773-3e7da5420617.png">
 
 ## User Stories
