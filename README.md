@@ -4,13 +4,16 @@ A program which allows users to deposit and withdraw money; and print out a stat
 
 ## How to install
 Fork or clone the respository to your local machine.
-`git clone https://github.com/heykathl/bank-tech-test`
+```
+git clone https://github.com/heykathl/bank-tech-test
+```
 Once the repository has been cloned you will be able to install the dependencies.
-`npm install`
+```
+npm install
+```
 
 ## How to use
-Run `node`
-Set up the files and classes
+Run `node` and set up the files and classes as follows:
 ```
 > const Bank = require("./lib/bank");
 undefined
@@ -22,8 +25,14 @@ undefined
 > const bank = new Bank(statement);
 ``` 
 
-To deposit money into the account
-`bank.deposit(<insert amount as an integer>, <insert date as a string>)`
+To deposit or withdraw money into the account
+```
+bank.deposit(<insert amount as an integer>, <insert date as a string>)
+```
+```
+bank.withdraw(<insert amount as an integer>, <insert date as a string>)
+```
+
 An example is shown below, and as shown in the Bank object, the transaction has been stored and balance updated
 ```
 > bank.deposit(10)
@@ -57,10 +66,18 @@ To print a statement, run the following:
 
 ## Testing
 There are a series of tests which can be run with the following.
-Change into the relevant directory with `cd bank-tech-test`
-Run `jest` 
+Change into the relevant directory with 
+```
+cd bank-tech-test
+```
+Run 
+```
+jest
+``` 
 To run tests from specific class files, this can be done by:
-`jest test/<filename>.test.js`
+```
+jest test/<filename>.test.js
+```
 
 ## My approach to the challenge
 The challenge began with me drafting the user stories for each requirement outlined [here](https://github.com/makersacademy/course/blob/main/individual_challenges/bank_tech_test.md). 
