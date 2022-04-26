@@ -26,8 +26,8 @@ To deposit money into the account
 `bank.deposit(<insert amount as an integer>, <insert date as a string>)`
 An example is shown below, and as shown in the Bank object, the transaction has been stored and balance updated
 ```
-> bank.deposit(10, "14/02/2022")
-> bank.withdraw(5.5, "14/02/2022")
+> bank.deposit(10)
+> bank.withdraw(5.5)
 undefined
 > bank
 Bank {
@@ -35,11 +35,11 @@ Bank {
   transactions: [
     {
       type: 'credit',
-      date: '14/02/2022',
+      date: '26/04/2022',
       amount: '10.00',
       balance: 10
     },
-    { type: 'debit', date: '14/02/2022', amount: '5.50', balance: 4.5 }
+    { type: 'debit', date: '26/04/2022', amount: '5.50', balance: 4.5 }
   ],
   statement: Statement {
     statement: [],
@@ -51,8 +51,8 @@ To print a statement, run the following:
 ```
 > bank.printStatement();
 'date || credit || debit || balance\n' +
-  '14/02/2022 || 10.00 ||  || 10.00\n' +
-  '14/02/2022 ||  || 5.50 || 4.50'
+  '26/04/2022 || 10.00 ||  || 10.00\n' +
+  '26/04/2022 ||  || 5.50 || 4.50'
 ```
 
 ## Testing
@@ -64,7 +64,7 @@ To run tests from specific class files, this can be done by:
 
 ## My approach to the challenge
 The challenge began with me drafting the user stories for each requirement outlined [here](https://github.com/makersacademy/course/blob/main/individual_challenges/bank_tech_test.md). 
-I began diagramming the Bank class, and its associated methods. During the process, I realised that it may have been better to make a new class for print the statement of transactions, as shown below. This is to ensure that me code follows single resposibility principle (SRP).
+I began diagramming the Bank class, and its associated methods. During the process, I realised that it would have been appropriate to make a new class to print the statement of transactions, as shown below. This is to ensure that my code follows single resposibility principle (SRP).
 <img width="467" alt="Screenshot 2022-04-25 at 18 31 05" src="https://user-images.githubusercontent.com/74867241/165142380-2c53bab0-56b4-4146-8773-3e7da5420617.png">
 
 ## User Stories

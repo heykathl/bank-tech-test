@@ -9,6 +9,9 @@ describe("Bank", () => {
   beforeEach(() => {
     statement = new Statement();
     bank = new Bank(statement);
+    jest
+      .spyOn(global.Date, "now")
+      .mockImplementation(() => new Date("2022-05-14T11:01:58.135Z").valueOf());
   });
 
   // it("it returns bank balance", () => {
@@ -22,7 +25,7 @@ describe("Bank", () => {
 
   it("can withdraw money from the bank account and balance is updated", () => {
     bank.deposit(10.5);
-    bank.withdraw(5);
+    bank.withdraw(5.0);
     expect(bank.getBalance()).toBe(5.5);
   });
 
@@ -51,33 +54,37 @@ describe("Bank", () => {
     bank.withdraw(5.5);
     bank.withdraw(2.0);
     expect(bank.getTransactions()).toEqual([
-      { type: "credit", amount: "10.50", balance: 10.5 },
-      { type: "debit", amount: "5.50", balance: 5.0 },
-      { type: "debit", amount: "2.00", balance: 3.0 },
+      { type: "credit", date: "14/05/2022", amount: "10.50", balance: 10.5 },
+      { type: "debit", date: "14/05/2022", amount: "5.50", balance: 5.0 },
+      { type: "debit", date: "14/05/2022", amount: "2.00", balance: 3.0 },
     ]);
   });
 
   it("stores the balance of when the money was deposited into bank", () => {
     bank.deposit(10.0);
     expect(bank.getTransactions()).toEqual([
-      { type: "credit", amount: "10.00", balance: 10.0 },
+      { type: "credit", date: "14/05/2022", amount: "10.00", balance: 10.0 },
     ]);
   });
 
-  it("stores the date of when the money is withdrawn from bank", () => {
-    bank.deposit(10.0, "14/01/2023");
-    bank.withdraw(5.0, "15/01/2023");
-    expect(bank.getTransactions()).toEqual([
-      { type: "credit", date: "14/01/2023", amount: "10.00", balance: 10.0 },
-      { type: "debit", date: "15/01/2023", amount: "5.00", balance: 5.0 },
-    ]);
-  });
+  // it("stores today's date when carrying out a transaction", () => {
+  //   jest
+  //     .spyOn(global.Date, 'now')
+  //     .mockImplementation(() =>
+  //       new Date('2022-05-14T11:01:58.135Z').valueOf()
+  //     );
+
+  //   bank.deposit(10.00)
+  //   expect(bank.getTransactions()).toEqual([
+  //     { type: "credit", date: "14/05/2022", amount: "10.00", balance: 10.00 },
+  //   ])
+  // })
 
   it("prints the statement of all transactions", () => {
-    bank.deposit(10.35, "14/01/2023");
-    bank.withdraw(5.1, "15/01/2023");
+    bank.deposit(10.35);
+    bank.withdraw(5.1);
     expect(bank.printStatement()).toBe(
-      "date || credit || debit || balance\n14/01/2023 || 10.35 ||  || 10.35\n15/01/2023 ||  || 5.10 || 5.25"
+      "date || credit || debit || balance\n14/05/2022 || 10.35 ||  || 10.35\n14/05/2022 ||  || 5.10 || 5.25"
     );
   });
 });
