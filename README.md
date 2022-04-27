@@ -36,32 +36,24 @@ bank.withdraw(<insert amount as an integer>)
 An example is shown below, and as shown in the Bank object, the transaction has been stored and balance updated
 ```
 > bank.deposit(10)
+undefined
+> bank.deposit(10)
+undefined
+> bank.deposit(10)
+undefined
 > bank.withdraw(5.5)
 undefined
-> bank
-Bank {
-  balance: 10,
-  transactions: [
-    {
-      type: 'credit',
-      date: '26/04/2022',
-      amount: '10.00',
-      balance: 10
-    },
-    { type: 'debit', date: '26/04/2022', amount: '5.50', balance: 4.5 }
-  ],
-  statement: Statement {
-    statement: [],
-    header: 'date || credit || debit || balance'
-  }
-}
 ```
+
 To print a statement, run the following:
+
 ```
 > bank.printStatement();
 'date || credit || debit || balance\n' +
-  '26/04/2022 || 10.00 ||  || 10.00\n' +
-  '26/04/2022 ||  || 5.50 || 4.50'
+  '27/04/2022 || 10.00 ||  || 10.00\n' +
+  '27/04/2022 || 10.00 ||  || 20.00\n' +
+  '27/04/2022 || 10.00 ||  || 30.00\n' +
+  '27/04/2022 ||  || 5.50 || 24.50'
 ```
 
 ## Testing
@@ -82,7 +74,10 @@ jest test/<filename>.test.js
 ## My approach to the challenge
 The challenge began with me drafting the user stories for each requirement outlined [here](https://github.com/makersacademy/course/blob/main/individual_challenges/bank_tech_test.md). 
 I began diagramming the Bank class, and its associated methods. During the process, I realised that it would have been appropriate to make a new class to print the statement of transactions, as shown below. This is to ensure that my code follows single resposibility principle (SRP).\
-<img width="467" alt="Screenshot 2022-04-25 at 18 31 05" src="https://user-images.githubusercontent.com/74867241/165142380-2c53bab0-56b4-4146-8773-3e7da5420617.png">
+<img width="467" alt="Screenshot 2022-04-25 at 18 31 05" src="https://user-images.githubusercontent.com/74867241/165142380-2c53bab0-56b4-4146-8773-3e7da5420617.png">\
+
+This has been reviewed by John, one of the Maker's coaches. I reviewed his comments and amended my code and tests. I also completed a UML diagram.\
+<img width="703" alt="Screenshot 2022-04-27 at 17 52 07" src="https://user-images.githubusercontent.com/74867241/165578468-c784ba12-a5fc-456c-8f30-ef982a2473f7.png">\
 
 ## User Stories
 ```

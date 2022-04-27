@@ -3,5 +3,5 @@ node_modules
 Bank.Drawio
 ~$Bank.drawio.bkp
 .eslintrc.js
-coverage/
 ~$Bank.drawio.dtmp
+Bank.drawio
